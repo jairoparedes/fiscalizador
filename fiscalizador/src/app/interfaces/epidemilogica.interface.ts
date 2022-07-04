@@ -1,0 +1,33 @@
+export interface epidemiologica {
+  numero_folio: string;
+  fecha_notificacion: string;
+  F_Activos: string;
+  ultimo_dia_activo: string;
+  act: string;
+  eclinicalab: string;
+  etapa_clinica: string;
+  establecimiento_salud: string;
+  EstadoFiscalizacion: string;
+  estado_paciente: string;
+  nombres_paciente: string;
+  primer_apellido_paciente: string;
+  segundo_apellido_paciente: string;
+  tipo_identificacion: string;
+  identificacion_paciente: string;
+  dv: string;
+  sexo: string;
+  via_residencia: string;
+  direccion: string;
+  numero_residencia: string;
+  dpto_residencia: string;
+  poblacion_villa: string;
+  region_residencia: string;
+  comuna_residencia: string;
+  telefono_celular: string;
+  presentacion_clinica: string;
+  fecha_primeros_sintomas: string;
+  lugar_reposo: string;
+  contacto_enfermos: string;
+  fecha_toma_muestra_1: string;
+  fecha_toma_muestra: string;
+}

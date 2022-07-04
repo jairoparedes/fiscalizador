@@ -1,0 +1,72 @@
+<div class="content" role="main">
+
+
+  <!-- <p class="fw-bold" *ngIf="!showSituacion">Escanea el código QR</p> -->
+  <!-- <zxing-scanner [formats]="allowedFormats"></zxing-scanner> -->
+  <zxing-scanner class="marco w-75" (scanSuccess)="onCodeResult($event)" *ngIf="!showSituacion"
+    [formats]="allowedFormats" [autofocusEnabled]="true">
+  </zxing-scanner>
+
+  <!-- Aqui va divisor  -->
+
+  <!-- Aqui va consulta por rut  -->
+  <p class="fw-bold titulos" *ngIf="!showSituacion">Escanea el código QR</p>
+  <p class="fw-bold titulos" *ngIf="!showSituacion">ó</p>
+
+  <p class="fw-bold titulos" *ngIf="!showSituacion">Ingresa el RUT</p>
+  <div class="input-group mb-3 w-75" *ngIf="!showSituacion">
+    <input [(ngModel)]='textoDeInput' type="text" class="form-control" placeholder="Ej. 11222333-4" aria-label="Recipient's username"
+      aria-describedby="button-addon2">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+      (click)="obtenerSituacionEpiRut()" *ngIf="!showSituacion">Buscar</button>
+  </div>
+  <!-- <div style="display: flex;">
+      
+    <input ngModel #rutconsultado>
+    <button (click)="obtenerSituacionEpiRut()">Consultar</button>
+    </div>
+     -->
+  <!-- Aqui va resultados  -->
+  <div id="resultados"></div>
+
+
+  <!-- <section class="results" *ngIf="qrResultString">
+    <div>
+      <small>Result</small>
+      <strong>{{ qrResultString }}</strong>
+    </div>
+    <button mat-icon-button (click)="clearResult()">&times;</button>
+  </section>
+ -->
+  <div *ngIf="passed&&showSituacion" class="text-center mb-2">
+    <img src="../../../assets/icons/icon2.png" class="rounded w-25" alt="...">
+    <p class="fw-bold titulos">Habilitado</p>
+  </div>
+  <div *ngIf="!passed&&showSituacion" class="text-center mb-2">
+    <img src="../../../assets/icons/icon1.png" class="rounded w-25" alt="...">
+    <p class="fw-bold titulos">Infractor</p>
+  </div>
+
+  <div *ngIf="showSituacion" class="bd-example" style="text-transform: uppercase;">
+    <ul style="padding-left: 0px;">
+      <li class="headlist">Nombres Paciente</li>
+      <li class="infolist">{{rasultados[0].nombres_paciente}} {{rasultados[0].primer_apellido_paciente}} {{rasultados[0].segundo_apellido_paciente}}</li>
+      <li class="headlist">Identificacion Paciente</li>
+      <li class="infolist">{{rasultados[0].identificacion_paciente}}-{{rasultados[0].dv}}</li>
+      <li class="headlist">Direccion</li>
+      <li class="infolist">{{rasultados[0].direccion}} {{rasultados[0].numero_residencia}}</li>
+      <li class="headlist">Ultimo Estado Fiscalizacion</li>
+      <li class="infolist">{{rasultados[0].EstadoFiscalizacion}}</li>
+      <li class="headlist">Ultimo Dia Activo</li>
+      <li class="infolist">{{rasultados[0].ultimo_dia_activo}}</li>
+    </ul>
+  </div>
+
+  <div>
+    <!-- <button type="button" class="btn btn-primary btn-lg" routerLink="/fiscalizador" *ngIf="showSituacion"
+      [ngClass]="showSituacion ? 'floatTransition' : ''" (click)="nuevalecturaQR()"> Volver</button> -->
+
+    <button type="button" class="btn btn-primary btn-sm btn-block mt-2" routerLink="/fiscalizador" *ngIf="showSituacion"
+      (click)="nuevalecturaQR()">Volver</button>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+.logo {
+    height: 100px;
+  }
+@media only screen and (max-width: 400px) {
+    .logo {
+        height: 40px;
+    }
+}
